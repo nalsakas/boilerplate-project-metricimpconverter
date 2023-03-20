@@ -1,11 +1,11 @@
 function ConvertHandler() {
   this.conv_units = {
-    'km': 0.6213,
-    'mi': 1.6093,
-    'l': 0.2641,
-    'gal': 3.7854,
-    'kg': 2.2046,
-    'lbs': 0.4535
+    'km': 0.62137,
+    'mi': 1.60934,
+    'l': 0.26417,
+    'gal': 3.78541,
+    'kg': 2.20462,
+    'lbs': 0.45359
   }
 
   this.long_units = {
