@@ -1,11 +1,11 @@
 function ConvertHandler() {
   this.conv_units = {
-    'km': 0.62137,
-    'mi': 1.60934,
-    'l': 0.26417,
     'gal': 3.78541,
-    'kg': 2.20462,
-    'lbs': 0.453592
+    'lbs': 0.453592,
+    'mi': 1.60934,
+    'L': 0.264172,
+    'kg': 2.204624,
+    'km': 0.621372,
   }
 
   this.long_units = {
@@ -20,7 +20,7 @@ function ConvertHandler() {
   this.ret_units = {
     'km': 'mi',
     'mi': 'km',
-    'l': 'gal',
+    'L': 'gal',
     'gal': 'L',
     'kg': 'lbs',
     'lbs': 'kg'
@@ -73,6 +73,7 @@ function ConvertHandler() {
       let pos = input.search(input.match(this.regex)[0])
       result = input.slice(pos)
       result = result.toLowerCase()
+      result = result == "l" ? "L" : result
     }
     else 
     {
@@ -91,11 +92,11 @@ function ConvertHandler() {
   }
   
   this.getReturnUnit = function(initUnit) {
-      return this.ret_units[initUnit.toLowerCase()];
+      return this.ret_units[initUnit];
   };
 
   this.spellOutUnit = function(unit) {
-    return this.long_units[unit.toLowerCase()];
+    return this.long_units[unit];
   };
   
   this.convert = function(initNum, initUnit) {

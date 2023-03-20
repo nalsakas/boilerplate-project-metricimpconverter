@@ -35,7 +35,7 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getUnit("15.0mi"), "mi") 
     })
     test("convertHandler should correctly read each valid input unit.", ()=>{
-        assert.equal(convertHandler.getUnit("15.0l"), "l")    
+        assert.equal(convertHandler.getUnit("15.0l"), "L")    
     })
     test("convertHandler should correctly read each valid input unit.", ()=>{
         assert.equal(convertHandler.getUnit("15.0gal"), "gal")
@@ -57,7 +57,7 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getReturnUnit("lbs"), "kg")
         assert.equal(convertHandler.getReturnUnit("km"), "mi")
         assert.equal(convertHandler.getReturnUnit("mi"), "km")
-        assert.equal(convertHandler.getReturnUnit("l"), "gal")
+        assert.equal(convertHandler.getReturnUnit("L"), "gal")
         assert.equal(convertHandler.getReturnUnit("gal"), "L")
     })
     test("convertHandler should correctly return the spelled-out string unit for each valid input unit.", ()=>{
