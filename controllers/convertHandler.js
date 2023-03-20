@@ -11,7 +11,7 @@ function ConvertHandler() {
   this.long_units = {
     'kg': 'kilograms',
     'lbs': 'pounds',
-    'l': 'liters',
+    'L': 'liters',
     'gal': 'galons',
     'km': 'kilometers',
     'mi': 'miles'
@@ -21,7 +21,7 @@ function ConvertHandler() {
     'km': 'mi',
     'mi': 'km',
     'l': 'gal',
-    'gal': 'l',
+    'gal': 'L',
     'kg': 'lbs',
     'lbs': 'kg'
   }
@@ -91,11 +91,11 @@ function ConvertHandler() {
   }
   
   this.getReturnUnit = function(initUnit) {
-      return this.ret_units[initUnit];
+      return this.ret_units[initUnit.toLowerCase()];
   };
 
   this.spellOutUnit = function(unit) {
-    return this.long_units[unit];
+    return this.long_units[unit.toLowerCase()];
   };
   
   this.convert = function(initNum, initUnit) {
