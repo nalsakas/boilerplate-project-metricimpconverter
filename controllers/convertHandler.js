@@ -61,7 +61,7 @@ function ConvertHandler() {
         throw new Error("invalid number")  
     }
     
-    return result;
+    return result.toFixed(5);
   }
   
   this.getUnit = function(input) {
@@ -100,7 +100,7 @@ function ConvertHandler() {
   
   this.convert = function(initNum, initUnit) {
     let result = initNum * this.conv_units[initUnit]
-    return result;
+    return result.toFixed(5);
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
