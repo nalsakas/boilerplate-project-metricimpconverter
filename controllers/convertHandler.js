@@ -56,12 +56,13 @@ function ConvertHandler() {
       case 1:
         [numerator, demoninator] = result.split('/')
         result = +numerator / +demoninator
+        result = result.toFixed(5)
         break
       default:
         throw new Error("invalid number")  
     }
     
-    return result.toFixed(5);
+    return result;
   }
   
   this.getUnit = function(input) {
