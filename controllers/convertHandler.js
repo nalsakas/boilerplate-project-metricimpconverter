@@ -5,7 +5,7 @@ function ConvertHandler() {
     'mi': 1.60934,
     'L': 0.264172,
     'kg': 2.204624,
-    'km': 0.621372,
+    'km': 0.6213727,
   }
 
   this.long_units = {
@@ -30,16 +30,18 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     let result;
+    let invalid_unit = false
+    let invalid_number = false
     
-    /// Split number from unit
-    if (input.match(this.regex) != null)
+    /// Split number
+    const pos = input.search(/[a-z]/i)
+    if (pos != -1)
     {
-      let pos = input.search(input.match(this.regex)[0])
       result = input.slice(0, pos)
     }
-    else 
+    else
     {
-      throw new Error("invalid unit")
+      result = input
     }
 
     if (result.length == 0) {
@@ -58,9 +60,30 @@ function ConvertHandler() {
         result = +numerator / +demoninator
         break
       default:
-        throw new Error("invalid number")  
+        invalid_number = true
     }
     
+    try {
+      this.getUnit(input)
+    }
+    catch(error) {
+      invalid_unit = true
+    }
+
+
+    if (invalid_number && invalid_unit) 
+    {
+      throw new Error("invalid number and unit") 
+    }
+    else if (invalid_number)
+    {
+      throw new Error("invalid number")
+    }
+    else if (invalid_unit)
+    {
+      throw new Error("invalid unit")
+    }
+
     return result;
   }
   
