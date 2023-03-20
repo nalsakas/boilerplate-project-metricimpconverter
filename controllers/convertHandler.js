@@ -5,7 +5,7 @@ function ConvertHandler() {
     'l': 0.26417,
     'gal': 3.78541,
     'kg': 2.20462,
-    'lbs': 0.45359
+    'lbs': 0.453592
   }
 
   this.long_units = {
@@ -56,7 +56,6 @@ function ConvertHandler() {
       case 1:
         [numerator, demoninator] = result.split('/')
         result = +numerator / +demoninator
-        result = result.toFixed(5)
         break
       default:
         throw new Error("invalid number")  
