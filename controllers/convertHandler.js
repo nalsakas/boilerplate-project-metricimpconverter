@@ -100,7 +100,7 @@ function ConvertHandler() {
   
   this.convert = function(initNum, initUnit) {
     let result = initNum * this.conv_units[initUnit]
-    return result.toFixed(5);
+    return parseFloat(result.toFixed(5));
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
