@@ -23,9 +23,6 @@ suite('Unit Tests', function(){
     test("convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.", ()=>{
         assert.equal(convertHandler.getNum("km"), 1)    
     })
-
-
-
     test("convertHandler should correctly read each valid input unit.", ()=>{
         assert.equal(convertHandler.getUnit("km"), "km")
         assert.equal(convertHandler.getUnit("mi"), "mi")
