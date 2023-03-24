@@ -18,7 +18,7 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getNum("15.0/3.0km"), 5)    
     })
     test("convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).", ()=>{
-        assert.throws(()=>convertHandler.getNum("15.0//3.0km"), Error)    
+        assert.throws(()=>convertHandler.getNum("15.0//3.0km"), /invalid input/)    
     })
     test("convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.", ()=>{
         assert.equal(convertHandler.getNum("km"), 1)    
@@ -32,7 +32,7 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getUnit("kg"), "kg")
     })
     test("convertHandler should correctly return an error for an invalid input unit.", ()=>{
-        assert.throws(()=>convertHandler.getUnit("15.0lll"), Error)
+        assert.throws(()=>convertHandler.getUnit("15.0lll"), /invalid unit/)
     })
     test("convertHandler should return the correct return unit for each valid input unit.", ()=>{
         assert.equal(convertHandler.getReturnUnit("kg"), "lbs")
