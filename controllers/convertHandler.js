@@ -48,19 +48,11 @@ function ConvertHandler() {
       result = '1'
     }
 
-    /// Check / characters inside number
-    const matches = Array.from(result.matchAll('/'))
-    switch(matches.length)
-    {
-      case 0:
-        result = +result
-        break
-      case 1:
-        [numerator, demoninator] = result.split('/')
-        result = +numerator / +demoninator
-        break
-      default:
-        invalid_number = true
+    /// Check /, . characters inside number
+    try {
+      result = this.str2num(result);
+    } catch (error) {
+      invalid_number = true;
     }
     
     try {
@@ -87,6 +79,42 @@ function ConvertHandler() {
     return result;
   }
   
+  this.str2num = function (str) {
+    let num = 0;
+
+    const matches = str.match(/\//g)  || [];
+    switch (matches.length) {
+      case 0:
+        num = this.str2decimal(str);
+        break;
+      case 1:
+        const [numerator, demoninator] = str.split("/");
+        num = this.str2decimal(numerator) / this.str2decimal(demoninator);
+        break;
+      default:
+        throw new Error("invalid_number");
+    }
+    return num
+  };
+
+  this.str2decimal = function(str)
+  {
+      let num = 0
+      const points = str.match(/\./g) || [];
+
+      switch (points.length) {
+      case 0:
+        num = parseInt(str);
+        break;
+      case 1:
+        num = parseFloat(str)
+        break;
+      default:
+        throw new Error("invalid_number");
+    }
+    return num
+  }
+
   this.getUnit = function(input) {
     let result;
     

@@ -6,7 +6,7 @@ const server = require('../server');
 chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
-    test("Convert a valid input such as 10L", (done) => {
+    test("Convert a valid input such as 10L", function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: '10L'})
@@ -22,7 +22,7 @@ suite('Functional Tests', function() {
 
     })
 
-    test("Convert an invalid input such as 32g", (done) => {
+    test("Convert an invalid input such as 32g", function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: '32g'})
@@ -34,7 +34,7 @@ suite('Functional Tests', function() {
          })
     })
 
-    test("Convert an invalid number such as 3/7.2/4kg", (done) => {
+    test("Convert an invalid number such as 3/7.2/4kg", function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: '3/7.2/4kg'})
@@ -47,7 +47,7 @@ suite('Functional Tests', function() {
 
     })
 
-    test("Convert an invalid number AND unit such as 3/7.2/4kilomegagram", (done) => {
+    test("Convert an invalid number AND unit such as 3/7.2/4kilomegagram", function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: '3/7.2/4kilomegagram'})
@@ -60,7 +60,7 @@ suite('Functional Tests', function() {
 
     })
 
-    test("Convert with no number such as kg", (done) => {
+    test("Convert with no number such as kg", function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: 'kg'})
